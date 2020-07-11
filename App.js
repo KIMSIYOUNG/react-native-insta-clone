@@ -1,21 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {StatusBar} from 'react-native'
+import HeaderNav from './component/HeaderNav';
+import Search from './component/Search';
+import Upload from './component/Upload';
+import Heart from './component/Heart';
+import Profile from './component/Profile';
+import Home from './component/Home';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const Tab = createBottomTabNavigator();
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = () => (
+  <NavigationContainer>
+    <Tab.Navigator>
+      <Tab.Screen name="Home"
+                  component={Home}
+      />
+      <Tab.Screen name="search"
+                  component={Search}
+      />
+      <Tab.Screen name="upload"
+                  component={Upload}
+      />
+      <Tab.Screen name="heart"
+                  component={Heart}
+      />
+      <Tab.Screen name="profile"
+                  component={Profile}
+      />
+    </Tab.Navigator>
+  </NavigationContainer>
+);
+
+export default App
+
